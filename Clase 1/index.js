@@ -13,6 +13,10 @@ NOT = !
 /*
 == => COMPARO EL VALOR (igual)
 != => COMPARO EL VALOR (distinto)
+
+=== => estrictamente igual (compara valor y tipo)
+!== => estric. distinto 
+
 >  MAYOR QUE
 < MENOR QUE
 <= MENOR O IGUAL QUE
@@ -20,4 +24,3 @@ NOT = !
 === => 
 !== => 
 */
-Z
