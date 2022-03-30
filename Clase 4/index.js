@@ -30,7 +30,7 @@ fibonacci(5); // 5
 //fibonacci(0) => 0 < 2 es verdadero
 //fibonacci(0) =>  0
 
-//fibonacci(2) => 1
-//fibonacci(3) => 2
-//fibonacci(4) => 3
-//fibonacci(5) => 5
+//fibonacci(2) => 1 (fibonacci(1)        +       fibonacci(0))
+//fibonacci(3) => 2 (fibonacci(2)        +       fibonacci(1))
+//fibonacci(4) => 3 (fibonacci(3)        +       fibonacci(2))
+//fibonacci(5) => 5 (fibonacci(4)        +       fibonacci(3))
