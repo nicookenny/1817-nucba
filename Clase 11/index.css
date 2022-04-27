@@ -1,0 +1,10 @@
+.dark {
+	color: white;
+	background-color: black;
+	border: 1px solid peru;
+}
+
+.light {
+	color: black;
+	background-color: white;
+}
