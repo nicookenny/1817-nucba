@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<script src="https://cdn.tailwindcss.com"></script>
+		<link rel="stylesheet" href="index.css"></link>
+
+		<title>Document</title>
+	</head>
+	<body>
+		<section id="content">
+            <div id="form">
+                <div class="flex flex-col justify-center">
+                    <select id="type">
+                        <option value="INGRESO">INGRESO</option>
+                        <option value="EGRESO">EGRESO</option>
+                    </select>
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
+                        Descripción del movimiento
+                      </label>
+                    <input type="text" id="description" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"/>
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
+                        Importe del movimiento
+                      </label>
+                    <input id="amount" type="number" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"/>
+                    <label class="block text-gray-700 text-sm font-bold mb-2" for="password">
+                       Fecha del movimiento
+                      </label>
+                    <input id="date" type="date" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"/>
+                
+                </div>
+                <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full">
+                    Agregar
+                </button>
+            </div>
+            <div id="table">
+                <table class="w-full h-full text-sm text-left text-gray-500 dark:text-gray-400">
+                    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                        <tr>
+                            <th scope="col" class="px-6 py-3">
+                                Descripcion
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Tipo de movimiento
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Fecha
+                            </th>
+                            <th scope="col" class="px-6 py-3">
+                                Importe
+                            </th>   
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+                        <tfoot class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+                            <tr>
+                                <td scope="col" class="px-6 py-3">
+
+                                </td>
+                                <td scope="col" class="px-6 py-3"></td>
+                                <td scope="col" class="px-6 py-3"></td>
+                                <td scope="col" class="px-6 py-3" id="finalamount">
+                                    $125000
+                                </td>
+                            </tr>
+                        </tfoot>
+                    </tbody>
+                </table>
+        </section>
+
+		<script src="./index.js"></script>
+	</body>
+</html>
