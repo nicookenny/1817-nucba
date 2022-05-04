@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+	</head>
+	<body>
+		<form>
+			<label>
+				Nombre
+				<input name="name" type="text" />
+			</label>
+			<label>
+				Apellido
+				<input name="lastname" type="text" />
+			</label>
+			<br />
+			<br />
+
+			<label>
+				Correo
+				<input name="email" />
+			</label>
+			<label>
+				Contraseña
+				<input name="password" type="password" />
+			</label>
+			<label>
+				Telefono
+				<input name="phone" type="tel" />
+			</label>
+			<label>
+				DNI
+				<input name="dni" type="number" />
+			</label>
+			<label>
+				Fecha de nacimiento
+				<input name="birthdate" type="date" />
+			</label>
+			<br />
+			<br />
+
+			<label>
+				Aceptar TyC
+				<input name="tyc" type="checkbox" value="aceptado" />
+			</label>
+			<input type="submit" />
+		</form>
+		<span id="errors"></span>
+		<script src="./index.js"></script>
+	</body>
+</html>
