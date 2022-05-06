@@ -1,0 +1,543 @@
+@import '../variables/main';
+@include resetStyles;
+
+.principalWrapper {
+    @media (min-width: 200px){
+        width: 100%;
+    }
+
+    @media (min-width: 1200px){
+        width: 1200px;
+    }
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    padding: 3rem 0 8rem 0;
+    background: $main-yellow;
+
+    @media(max-width: 1200px){
+        padding: 3rem 1.5rem 0 1.5rem;
+    }
+
+
+    .principalWrapper {
+        @include orderFlex(row, space-between, center);
+    }
+
+    .logo {
+       @include imageSize(15rem, auto);
+
+       @media(max-width: 475px){
+            @include imageSize(9rem, auto);
+       }
+    }
+
+
+    nav {
+        width: 50%;
+
+        @media (min-width: 200px) {
+            display: none;
+        }
+
+        @media (min-width: 1200px) {
+            display: block;
+        }
+
+        ul {
+            @include orderFlex(row, space-between, center);
+        }
+
+        li {
+            text-transform: uppercase;
+
+            a {
+                color: $main-blue;
+                font-weight: 700;
+
+                &:hover{
+                    text-decoration: underline;
+                    text-underline-position: under;
+                    transition: .1s all;
+                }
+            }
+
+            &:nth-of-type(4){
+                div {
+                    width: 2rem;
+                }
+            }
+        }
+    }
+
+    .menu-mobile {
+        width: 6rem;
+
+        @media (min-width: 200px) {
+            display: block;
+            width: 4rem;
+        }
+
+        @media (min-width: 1200px) {
+            display: none;
+        }
+
+        div {
+            @include imageSize(100%, auto);
+        }
+
+        button {
+            background: transparent;
+            border: none;
+            outline: 0;
+            box-shadow: none !important;
+
+            &:hover, &:focus, &:active {
+                background: transparent;
+                border: none;
+                outline: 0;
+                box-shadow: none !important;
+            }
+        }
+    }
+
+    .dropdown-menu {
+        background: $main-yellow;
+        border: 1px solid $main-blue;
+    }
+}
+
+.about {
+    display: flex;
+    justify-content: center;
+    padding: 0 0 8rem 0;
+    background: $main-yellow;
+
+    .principalWrapper {
+        @media(min-width: 200px){
+            @include orderFlex(column, center, center);
+        }
+
+        @media(min-width: 1200px) {
+            @include orderFlex(row, space-between, center);
+        }
+    }
+
+    .aboutContent {
+        width: 50%;
+
+        @media (max-width: 1200px){
+            width: 100%;
+            padding: 0 1.5rem;
+            padding-top: 4rem;
+            text-align: center;
+        }
+
+        div {
+            width: 100%;
+
+            @media (max-width: 1200px){
+                width: 70vw;
+                margin: 0 auto;
+            }
+        }
+
+        &:nth-of-type(1){
+             margin-right: 5rem;
+
+             @media (max-width: 1200px){
+                margin-right: 0;
+                margin-bottom: 2rem;
+            }
+        }
+
+        p {
+            font-weight: 400;
+            font-size: 2.2rem;
+            margin: 1rem 0 5.5rem 0;
+        }
+
+        a {
+            padding: 1rem 1.5rem;
+            border-radius: 1rem;
+            background: $main-blue;
+            color: $main-white;
+            font-size: 1.2rem;
+            font-weight: 700;
+            text-transform: uppercase;
+
+            &:hover {
+                padding: 1.1rem 1.6rem;
+                transition: .1s all;
+            }
+        }
+    }
+}
+
+.description {
+    @include orderFlex(column, center, center);
+    background: $main-blue;
+    padding: 8rem 0;
+
+    .principalWrapper {
+        @include orderFlex(column, center, center);
+    }
+
+    div {
+        @include orderFlex(column, center, center);
+        text-align: center;
+
+        h2 {
+            font-size: 3.5rem;
+            text-transform: uppercase;
+            color:$main-yellow;
+
+            @media(max-width: 1200px) {
+                font-size: 10vw;
+            }
+        }
+
+        span {
+            color: $main-white;
+            font-size: 1.5rem;
+
+            @media(max-width: 1200px) {
+                font-size: 2rem;
+                margin-top: 4rem;
+                padding: 0 2rem;
+            }
+        }
+    }
+
+    ul {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        margin-top: 6rem;
+
+        @media(max-width: 1200px) {
+            flex-direction: column;
+        }
+
+        li {
+            @include orderFlex(column, center, center);
+            text-align: center;
+
+            @media(max-width: 1200px) {
+                margin-bottom: 4rem;
+            }
+
+            div {
+                width: 6rem;
+            }
+
+            p {
+                color: $main-white;
+                margin-top: 2rem;
+                font-size: 1.5rem;
+
+                @media(max-width: 1200px) {
+                    font-size: 2rem;
+                }
+            }
+
+        }
+    }
+}
+
+.listProducts {
+    @include orderFlex(column, center, center);
+    background: $main-white;
+    padding: 8rem 0;
+    text-align: center;
+
+    .principalWrapper {
+        @include orderFlex(column, center, center);
+    }
+
+    h2 {
+        font-size: 3.5rem;
+        color: $main-blue;
+    }
+
+    ul {
+        width: 100%;
+        margin-top: 7rem;
+        @include orderFlex(row, space-between, center);
+        flex-wrap: wrap;
+
+        @media (max-width: 1200px){
+            @include orderFlex(column, space-between, center);
+        }
+
+        li {
+            flex:  0 0 270px;
+            @include orderFlex(column, center, center);
+            background: $main-white;
+            border-radius: 3rem;
+            padding: 2.5rem;
+            margin-bottom: 5rem;
+            box-shadow: 2px 0px 17px 2px rgba($main-black,0.30);
+            position: relative;
+
+            @media (max-width: 1200px){
+                width: 400px;
+            }
+
+            @media (max-width: 575px){
+                width: 300px;
+            }
+
+            div {
+                @include imageSize(14rem, auto);
+            }
+
+            span {
+                &:first-of-type {
+                    color: $main-blue;
+                    text-transform: uppercase;
+                    font-size: 1.4rem;
+                    margin-top: 1.9rem;
+
+                    @media (max-width: 1200px){
+                        font-size: 7vw;
+                    }
+                }
+
+                &:last-of-type {
+                    color: $main-blue;
+                    text-transform: uppercase;
+                    font-size: 2.5rem;
+                    font-weight: 700;
+                    margin: 2rem 0;
+                }
+            }
+
+            button {
+                background: $main-yellow;
+                color: $main-black;
+                text-transform: uppercase;
+                padding: 0.8rem 4rem;
+                font-size: 1.1rem;
+                font-weight: 700;
+                font-family: 'Lato', sans-serif;
+                border: none;
+                border-radius: 1rem;
+                cursor: pointer;
+
+                &.disabled {
+                    background: $main-gray;
+                    color: $main-white;
+                    cursor: no-drop;
+                }
+            }
+
+            .outStock {
+                background: $main-error-color;
+                color: $main-white;
+                position: absolute;
+                top: 1rem;
+                z-index: 0;
+                text-transform: uppercase;
+                font-size: 1.5rem;
+                padding: 0.8rem 0;
+            }
+        }
+    }
+}
+
+.cartList {
+    @include orderFlex(column, center, center);
+    padding: 8rem 0;
+    text-align: center;
+    background: $main-gray;
+    position: relative;
+
+    #totalItems {
+        position: absolute;
+        top: 0;
+        background: $main-error-color;
+        color: $main-white;
+    }
+
+    .principalWrapper {
+        @include orderFlex(column, center, center);
+    }
+
+    h2 {
+        font-size: 3.5rem;
+        color: $main-blue;
+
+        @media (max-width: 1200px){
+            font-size: 10vw;
+        }
+    }
+
+    p {
+        font-size: 1.5rem;
+        color: $main-blue;
+        margin: 1.5rem 0 2rem 0;
+
+        @media (max-width: 1200px){
+            font-size: 7vw;
+        }
+    }
+
+    .cart-wrapper {
+        width: 70%;
+        background: $main-white;
+        padding: 2rem;
+        border-radius: 1rem;
+        color: $main-blue;
+
+        @media (max-width: 1200px){
+            width: 90%;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 0.5rem;
+
+            span {
+                font-size: 1.6rem;
+                font-weight: 700;
+
+                @media (max-width: 1200px){
+                    font-size: 0.8rem;
+                }
+            }
+        }
+
+        .cart-item-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: $main-blue;
+
+            span {
+                text-transform: capitalize;
+                font-size: 1.6rem;
+                font-weight: 500;
+                margin-left: 1rem;
+            }
+        }
+
+        .item-img{
+            width: 50px;
+        }
+
+        .total-items {
+            display: flex;
+            justify-content: flex-end;
+            font-size: 1.6rem;
+            border-top: 1px solid $main-blue;
+            margin-top: 2rem;
+            padding-top: 1rem;
+        }
+
+        .total-items {
+            @include orderFlex(row, flex-end, flex-end);
+        }
+
+        button {
+            background: $main-yellow;
+            font-weight: 700;
+            font-size: 2rem;
+            text-transform: uppercase;
+            border: none;
+            border-radius: 1rem;
+            padding: 1rem 2rem;
+            margin-top: 2.5rem;
+
+            @media (max-width: 1200px){
+                font-size: 5vw;
+            }
+        }
+
+    }
+}
+
+.total-items {
+    display: flex;
+    justify-content: flex-end;
+    font-size: 1.6rem;
+    border-top: 1px solid $main-blue;
+    margin-top: 2rem;
+    padding-top: 1rem;
+    @include orderFlex(row, flex-end, flex-end);
+}
+
+button {
+    background: $main-yellow;
+    font-weight: 700;
+    font-size: 2rem;
+    text-transform: uppercase;
+    border: none;
+    border-radius: 1rem;
+    padding: 1rem 2rem;
+    margin-top: 2.5rem;
+
+    @media (max-width: 1200px){
+        font-size: 5vw;
+    }
+}
+
+.emptyProductsMessage {
+    font-weight: 700;
+    font-size: 1.6rem;
+}
+
+footer {
+    @include orderFlex(column, center, center);
+    padding: 8rem 0 4rem 0;
+    background: $main-blue;
+    color: $main-white;
+    text-transform: uppercase;
+
+    .principalWrapper {
+        @include orderFlex(column, center, center);
+    }
+
+    .title {
+        @include imageSize(30rem, auto);
+        margin-bottom: 4rem;
+
+        @media(max-width: 1200px) {
+            @include imageSize(70vw, auto);
+        }
+    }
+
+    section {
+        width: 80%;
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 4rem;
+
+        @media(max-width: 1200px) {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        div {
+            display: flex;
+            flex-direction: column;
+
+            @media(max-width: 1200px) {
+                margin-bottom: 3rem;
+            }
+
+            h2 {
+                font-size: 2.2rem;
+                margin-bottom: 1.8rem;
+            }
+
+            span {
+                font-size: 1.5rem;
+            }
+        }
+    }
+}

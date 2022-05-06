@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link href="https://fonts.googleapis.com/css2?family=Lato:wght@100;300;700&display=swap" rel="stylesheet" />
+		<!-- Bootstrap CSS -->
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+			crossorigin="anonymous"
+		/>
+		<link rel="stylesheet" href="./assets/css/styles.css" />
+		<title>PedimonYa App</title>
+	</head>
+	<body>
+		<main id="top">
+			<header>
+				<div class="principalWrapper">
+					<div class="logo">
+						<img src="./assets/img/pedimon-logo.png" alt="Perdimon Logo" />
+					</div>
+					<div class="btn-group menu-mobile">
+						<button type="button" class="btn btn-secondary" data-bs-toggle="dropdown" aria-expanded="false">
+							<div>
+								<img src="./assets/img/menu.png" alt="Menu Mobile" />
+							</div>
+						</button>
+						<ul class="dropdown-menu dropdown-menu-end">
+							<li><a href="#about">about</a></li>
+							<li><a href="#description">description</a></li>
+							<li><a href="#listProducts">products</a></li>
+							<li>
+								<a href="#cartList">
+									<div>
+										<img src="./assets/img/cart.svg" alt="Cart" />
+									</div>
+								</a>
+							</li>
+						</ul>
+					</div>
+					<nav>
+						<ul>
+							<li><a href="#about">about</a></li>
+							<li><a href="#description">description</a></li>
+							<li><a href="#listProducts">products</a></li>
+							<li>
+								<a href="#cartList">
+									<div id="cart">
+										<img src="./assets/img/cart.svg" alt="Cart" />
+										<span id="totalItems"></span>
+									</div>
+								</a>
+							</li>
+						</ul>
+					</nav>
+				</div>
+			</header>
+			<section class="about" id="about">
+				<div class="principalWrapper">
+					<div class="aboutContent">
+						<div>
+							<img src="./assets/img/pedimon-text.png" alt="Pedimon Ya" />
+						</div>
+						<p>
+							Busca tu Pokémon favorito y disfrutá de los beneficios de tener un bicho de estos en tu
+							casa! Hay como cinco millones para coleccionar!
+						</p>
+						<a href="#listProducts">Los quiero atrapar</a>
+					</div>
+					<div class="aboutContent">
+						<div>
+							<img src="./assets/img/pikachu-hero.png" alt="Pikachu Hero" />
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="description" id="description">
+				<div class="principalWrapper">
+					<div>
+						<h2>No te quedes sin tu pedido</h2>
+						<span> Dale Perry, no te podes quedar sin tu Pédimon! Mira lo fácil que es… </span>
+					</div>
+					<ul>
+						<li>
+							<div>
+								<img src="./assets/img/info-icon-1.png" alt="Info Icon" />
+							</div>
+							<p>
+								Elegís el Pédi que vos <br />
+								querés de la listade <br />
+								acá abajo (si hay ...)
+							</p>
+						</li>
+						<li>
+							<div>
+								<img src="./assets/img/info-icon-2.png" alt="Info Icon" />
+							</div>
+							<p>
+								Lo agregás al carrito de la <br />
+								camada tuvo que haber <br />
+								metido en algún lado...
+							</p>
+						</li>
+						<li>
+							<div>
+								<img src="./assets/img/info-icon-3.png" alt="Info Icon" />
+							</div>
+							<p>
+								le das al boton de comprar y <br />
+								LISTO! Ya tenés tus Pédis <br />
+								en casa muy pronto
+							</p>
+						</li>
+					</ul>
+				</div>
+			</section>
+			<section class="listProducts" id="listProducts">
+				<div class="principalWrapper">
+					<h2>Acá va la lista de los pokemonardos</h2>
+					<ul id="list-products"></ul>
+				</div>
+			</section>
+			<section class="cartList" id="cartList">
+				<div class="principalWrapper">
+					<h2>Ponéle que acá va un carrito...</h2>
+					<p>
+						Estaría piola en el navbar, tipo sidebar se abra... <br />
+						Pero como dicen las malas lenguas: "Mientras funcione"
+					</p>
+					<div class="cart-wrapper" id="cartWrapper">
+						<div class="emptyProductsMessage">No tienes productos seleccionados</div>
+					</div>
+					<div class="total-items">
+						<span>
+							<strong>Total:</strong>
+							<span id="totalProducts"></span>$
+						</span>
+					</div>
+					<button>finalizar compra</button>
+				</div>
+			</section>
+			<footer>
+				<div class="principalWrapper">
+					<div class="title">
+						<img src="./assets/img/pedimon-text.png" alt="Pokemon Logo" />
+					</div>
+					<section>
+						<div>
+							<h2>Contacto</h2>
+							<span>03 03 456 nananan</span>
+							<span>calle falsa 123</span>
+						</div>
+						<div>
+							<h2>legales</h2>
+							<span>
+								Cualquier inconveniente dirigirse <br />
+								a lo de Santiago que se hace <br />
+								cargo de todo :)
+							</span>
+						</div>
+					</section>
+					<span class="copyright">con ❤️ hecho en Nucba</span>
+				</div>
+			</footer>
+			<a class="pokeball" href="#top">
+				<div>
+					<img src="./assets/img/pokeball.png" alt="Pokemon Link" />
+				</div>
+			</a>
+		</main>
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+			integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+			crossorigin="anonymous"
+		></script>
+		<script src="./js/index.js"></script>
+		<script src="./js/DOM.js"></script>
+	</body>
+</html>
