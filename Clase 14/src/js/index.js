@@ -1,18 +1,19 @@
 class Database {
-	constructor() {
-		this.users = [];
-		this.products = [];
+	constructor({ products = [], users = [] }) {
+		this.users = users;
+		this.products = products;
 	}
 
 	addProduct(...products) {
 		this.products.push(...products);
+		localStorage.setItem('database', JSON.stringify(this));
 	}
 
 	addUser(user) {
 		this.users.push(user);
+		localStorage.setItem('database', JSON.stringify(this));
 	}
 }
-const database = new Database();
 
 class Cart {
 	constructor({
@@ -34,18 +35,29 @@ class Cart {
 			return alert('Che, el producto que estás agregando no existe, Ash.');
 		}
 
-		if (product.stock > quantity) {
+		if (product.stock >= quantity) {
 			const price = quantity * product.price;
 
 			this.subtotal = this.subtotal + price;
 
 			product.stock = product.stock - quantity;
-			//TODO
-			//Validar si ya existe el producto en mi carrito, si existe quantity++, sino push
-			this.products.push({
-				ID,
-				quantity,
-			});
+
+			const productInCart = this.products.find((p) => p.ID === ID);
+
+			if (productInCart) {
+				productInCart.quantity += quantity;
+			} else {
+				this.products.push({
+					ID,
+					quantity,
+				});
+			}
+
+			localStorage.setItem('cart', JSON.stringify(this));
+
+			renderizarProductos(this);
+			renderizarCarrito(this);
+			localStorage.setItem('database', JSON.stringify(database));
 		} else {
 			alert('No hay mas stock, maestro, jajode.');
 		}
@@ -118,20 +130,8 @@ const Charizard = new Product({
 	image: 'https://i.pinimg.com/originals/e8/6b/86/e86b867b6369be2d0ea8d9024431f5b2.png',
 });
 
-// const Chicorita = new Product({
-// 	price: 1200,
-// 	stock: 15,
-// 	name: 'Chicorita',
-// 	description: 'El pokemon vegano',
-// 	image: 'https://static.wikia.nocookie.net/espokemon/images/4/4e/Chikorita.png/revision/latest/scale-to-width-down/1200?cb=20140206203521',
-// });
-
-// const Alakazam = new Product({
-// 	price: 2500,
-// 	stock: 15,
-// 	name: 'Alakazam',
-// 	description: 'El doblacucharas',
-// 	image: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/065.png',
-// });
-
-database.addProduct(Pikachu, Charmander, Charizard);
+const dbExistente = localStorage.getItem('database');
+const database = dbExistente ? new Database(JSON.parse(dbExistente)) : new Database({});
+if (!dbExistente) {
+	database.addProduct(Pikachu, Charmander, Charizard);
+}
