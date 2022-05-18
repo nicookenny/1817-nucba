@@ -1,6 +1,7 @@
 const productList = document.getElementById('list-products');
 const cartContainer = document.getElementById('cartWrapper');
 const finalPrice = document.getElementById('totalProducts');
+const finish = document.getElementById('finish');
 
 /**
  * 
@@ -17,11 +18,6 @@ const finalPrice = document.getElementById('totalProducts');
  */
 
 const renderizarCarrito = (carrito) => {
-	//!0 => truthy
-	if (!carrito.products.length) {
-		return;
-	}
-
 	while (cartContainer.firstChild) {
 		cartContainer.removeChild(cartContainer.firstChild);
 	}
@@ -30,7 +26,29 @@ const renderizarCarrito = (carrito) => {
 		finalPrice.removeChild(finalPrice.firstChild);
 	}
 
-	console.log(carrito);
+	if (!carrito.products.length) {
+		finish.classList.add('disabled-button');
+		finish.setAttribute('disabled', true);
+		finish.textContent = 'Tu carrito esta vacio';
+	} else {
+		finish.classList.remove('disabled-button');
+		finish.removeAttribute('disabled');
+		finish.textContent = 'Finalizar compra';
+	}
+
+	const finalPriceText = document.createTextNode(carrito.subtotal);
+	finalPrice.appendChild(finalPriceText);
+
+	//!0 => truthy
+	if (!carrito.products.length) {
+		const msgCarritoVacio = document.createElement('div');
+		msgCarritoVacio.classList.add('emptyProductsMessage');
+		const msgCarritoVacioText = document.createTextNode('No tienes productos seleccionados');
+		msgCarritoVacio.appendChild(msgCarritoVacioText);
+		cartContainer.appendChild(msgCarritoVacio);
+		return;
+	}
+
 	carrito.products.forEach((product) => {
 		const DatabaseProduct = database.products.find((p) => p.ID === product.ID);
 
@@ -49,6 +67,21 @@ const renderizarCarrito = (carrito) => {
 		const priceText = document.createTextNode(`$${DatabaseProduct.price} x ${product.quantity}`);
 		price.appendChild(priceText);
 
+		const containerButton = document.createElement('div');
+
+		const botonDisminuir = document.createElement('button');
+		const botonTextDisminuir = document.createTextNode('-');
+
+		botonDisminuir.appendChild(botonTextDisminuir);
+
+		botonDisminuir.addEventListener('click', (e) => carrito.removeProduct(product.ID));
+
+		const botonAumentar = document.createElement('button');
+		const botonTextAumentar = document.createTextNode('+');
+		botonAumentar.appendChild(botonTextAumentar);
+		botonAumentar.addEventListener('click', (e) => carrito.addProduct(product.ID));
+		containerButton.appendChild(botonDisminuir);
+		containerButton.appendChild(botonAumentar);
 		// const quantity = document.createElement('span');
 		// const quantityText = document.createTextNode(`Cantidad: `);
 		// quantity.appendChild(quantityText);
@@ -60,13 +93,10 @@ const renderizarCarrito = (carrito) => {
 
 		cartItem.appendChild(cartItemContent);
 		cartItem.appendChild(itemPrice);
+		cartItem.appendChild(containerButton);
 
 		cartContainer.appendChild(cartItem);
 	});
-
-	const finalPriceText = document.createTextNode(carrito.subtotal);
-
-	finalPrice.appendChild(finalPriceText);
 };
 
 const renderizarProductos = (carrito) => {
@@ -128,4 +158,8 @@ document.addEventListener('DOMContentLoaded', (e) => {
 
 	renderizarCarrito(carrito);
 	renderizarProductos(carrito);
+
+	finish.addEventListener('click', () => {
+		carrito.endShopSpree();
+	});
 });

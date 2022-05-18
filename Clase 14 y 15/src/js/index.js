@@ -28,7 +28,17 @@ class Cart {
 		this.subtotal = subtotal;
 	}
 
-	addProduct(ID, quantity) {
+	endShopSpree() {
+		alert(`Por favor, abona en caja (a adel) $${this.subtotal}`);
+		this.products = [];
+		this.subtotal = 0;
+
+		localStorage.removeItem('cart');
+		renderizarCarrito(this);
+		location.reload();
+	}
+
+	addProduct(ID, quantity = 1) {
 		const product = database.products.find((product) => product.ID === ID);
 
 		if (!product) {
@@ -71,7 +81,10 @@ class Cart {
 			return alert('Che, el producto que estás intentando eliminar no existe en tu carrito, Brook.');
 		}
 
+		//productdb.stock = 20
 		productdb.stock++;
+		//productdb.stock = 21
+
 		this.subtotal = this.subtotal - productdb.price;
 
 		if (product.quantity > 1) {
@@ -79,6 +92,12 @@ class Cart {
 		} else {
 			this.products = this.products.filter((product) => product.ID !== ID);
 		}
+
+		localStorage.setItem('cart', JSON.stringify(this));
+		localStorage.setItem('database', JSON.stringify(database));
+
+		renderizarProductos(this);
+		renderizarCarrito(this);
 	}
 }
 
@@ -106,20 +125,20 @@ class Product {
 	}
 }
 
-const Pikachu = new Product({
-	price: 500,
-	stock: 50,
-	name: 'Pikachu',
-	description: 'Pika Pika',
-	image: 'https://i.pinimg.com/550x/dd/20/84/dd208480c6937eb68a91f73df5ca904a.jpg',
-});
-
 const Charmander = new Product({
 	price: 900,
 	stock: 25,
 	name: 'Charmander',
 	description: 'Se prendió fuego',
 	image: 'https://assets.pokemon.com/assets/cms2/img/pokedex/full/004.png',
+});
+
+const Pikachu = new Product({
+	price: 500,
+	stock: 50,
+	name: 'Pikachu',
+	description: 'Pika Pika',
+	image: 'https://i.pinimg.com/550x/dd/20/84/dd208480c6937eb68a91f73df5ca904a.jpg',
 });
 
 const Charizard = new Product({
@@ -131,7 +150,9 @@ const Charizard = new Product({
 });
 
 const dbExistente = localStorage.getItem('database');
+
 const database = dbExistente ? new Database(JSON.parse(dbExistente)) : new Database({});
+
 if (!dbExistente) {
 	database.addProduct(Pikachu, Charmander, Charizard);
 }
